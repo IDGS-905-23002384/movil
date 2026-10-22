@@ -1,0 +1,6 @@
+@reachBack_HostAddress = http://localhost:5133
+
+GET {{reachBack_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

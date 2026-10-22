@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="28dp"
+    android:height="28dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Grupo rotado ligeramente hacia la izquierda (-7 grados como en Figma) -->
+    <group android:rotation="-7" android:pivotX="12" android:pivotY="12">
+        <!-- Barra 1 (más baja) -->
+        <path
+            android:fillColor="@android:color/white"
+            android:pathData="M4,14h3.5v6H4z" />
+        <!-- Barra 2 (más alta) -->
+        <path
+            android:fillColor="@android:color/white"
+            android:pathData="M10,4h3.5v16H10z" />
+        <!-- Barra 3 (mediana) -->
+        <path
+            android:fillColor="@android:color/white"
+            android:pathData="M16,9h3.5v11H16z" />
+    </group>
+</vector>
