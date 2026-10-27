@@ -1,13 +1,13 @@
 package com.maithear.reach
 
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
@@ -45,14 +45,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnLogin.setOnClickListener {
-            val email = etEmail.text.toString().trim()
-            val password = etPassword.text.toString().trim()
-
-            if (email.isNotEmpty() && password.isNotEmpty()) {
-                Toast.makeText(this, "¡Bienvenido a Reach, $email!", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Por favor completa todos los campos", Toast.LENGTH_SHORT).show()
-            }
+            val intent = Intent(this, InicioActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }

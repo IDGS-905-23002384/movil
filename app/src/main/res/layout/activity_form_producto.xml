@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F7FC"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/tvTituloForm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gestión de Producto"
+            android:textColor="#1237DB"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etSku"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_input"
+            android:hint="SKU (ej. RTX4070-SUP)"
+            android:paddingHorizontal="16dp" />
+
+        <EditText
+            android:id="@+id/etNombreProducto"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_input"
+            android:hint="Nombre del producto"
+            android:paddingHorizontal="16dp" />
+
+        <EditText
+            android:id="@+id/etMarcaProducto"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_input"
+            android:hint="Marca (ej. ASUS)"
+            android:paddingHorizontal="16dp" />
+
+        <EditText
+            android:id="@+id/etPrecioProducto"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_input"
+            android:hint="Precio ($)"
+            android:inputType="numberDecimal"
+            android:paddingHorizontal="16dp" />
+
+        <EditText
+            android:id="@+id/etStock"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_input"
+            android:hint="Stock (Cantidad disponible)"
+            android:inputType="number"
+            android:paddingHorizontal="16dp" />
+
+        <EditText
+            android:id="@+id/etImagenUrl"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_input"
+            android:hint="URL de la Imagen (https://...)"
+            android:paddingHorizontal="16dp" />
+
+        <EditText
+            android:id="@+id/etDescripcionProducto"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_input"
+            android:gravity="top"
+            android:hint="Descripción y especificaciones"
+            android:padding="16dp" />
+
+        <!-- Botón Guardar / Actualizar -->
+        <Button
+            android:id="@+id/btnGuardarProducto"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#1237DB"
+            android:text="Guardar Producto"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
+        <!-- Botón Desactivar (Visible solo al editar) -->
+        <Button
+            android:id="@+id/btnDesactivarProducto"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="#EF4444"
+            android:text="Desactivar Producto"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+    </LinearLayout>
+</ScrollView>

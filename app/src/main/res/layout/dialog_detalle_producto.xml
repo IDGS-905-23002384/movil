@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <ImageView
+        android:id="@+id/ivDetalleImagen"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/circuit" />
+
+    <TextView
+        android:id="@+id/tvDetalleMarca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="ASUS"
+        android:textColor="#1237DB"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvDetalleNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RTX 4070 SUPER"
+        android:textColor="#111827"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvDetalleStock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Stock: 8 disponibles"
+        android:textColor="#10B981"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tvDetalleDescripcion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        text="Descripción..."
+        android:textColor="#6B7280"
+        android:textSize="13sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvDetallePrecio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="$13,899"
+            android:textColor="#1237DB"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <!-- Botón para abrir edición -->
+        <Button
+            android:id="@+id/btnEditarModal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#1237DB"
+            android:text="Editar / Gestionar"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+</LinearLayout>
