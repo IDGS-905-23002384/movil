@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/flTracker"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:background="@drawable/bg_circulo_gris">
+
+        <ImageView
+            android:id="@+id/ivTracker"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_gravity="center"
+            android:importantForAccessibility="no"
+            app:tint="@color/white" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tvTracker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:gravity="center"
+        android:textSize="10sp" />
+</LinearLayout>

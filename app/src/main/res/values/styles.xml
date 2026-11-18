@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ReachEyebrow">
+        <item name="android:textColor">@color/azul</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.12</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="ReachTitulo">
+        <item name="android:textColor">@color/texto</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ReachSeccion">
+        <item name="android:textColor">@color/texto</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ReachCuerpo">
+        <item name="android:textColor">@color/texto_sec</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+    </style>
+
+    <style name="ReachPequeno">
+        <item name="android:textColor">@color/texto_ter</item>
+        <item name="android:textSize">11sp</item>
+    </style>
+
+    <style name="ReachEtiqueta">
+        <item name="android:textColor">#1F2937</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginBottom">6dp</item>
+    </style>
+
+    <style name="ReachPrecio">
+        <item name="android:textColor">@color/azul</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ReachCampo">
+        <item name="android:background">@drawable/bg_input</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:paddingStart">14dp</item>
+        <item name="android:paddingEnd">14dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/texto</item>
+        <item name="android:textColorHint">@color/gris</item>
+        <item name="android:layout_marginBottom">14dp</item>
+    </style>
+
+    <style name="ReachBotonPrimario" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/azul</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">14dp</item>
+        <item name="android:minHeight">52dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="ReachBotonContorno" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="strokeColor">@color/azul</item>
+        <item name="android:textColor">@color/azul</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">14dp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="ReachBotonTexto" parent="Widget.Material3.Button.TextButton">
+        <item name="android:textColor">@color/azul</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="ReachBotonPeligro" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="strokeColor">@color/rojo</item>
+        <item name="android:textColor">@color/rojo</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">14dp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="ReachBadge">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:paddingTop">3dp</item>
+        <item name="android:paddingBottom">3dp</item>
+    </style>
+
+    <style name="ReachTarjeta">
+        <item name="android:background">@drawable/bg_card</item>
+        <item name="android:elevation">1dp</item>
+        <item name="android:padding">16dp</item>
+    </style>
+
+    <style name="ReachChip" parent="Widget.Material3.Chip.Filter">
+        <item name="chipBackgroundColor">@color/chip_fondo</item>
+        <item name="android:textColor">@color/chip_texto</item>
+        <item name="chipStrokeColor">@color/chip_borde</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="checkedIconVisible">false</item>
+        <item name="chipCornerRadius">20dp</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="ReachNavegacion" parent="Widget.Material3.BottomNavigationView">
+        <item name="android:background">@color/white</item>
+        <item name="itemIconTint">@color/nav_item</item>
+        <item name="itemTextColor">@color/nav_item</item>
+        <item name="itemActiveIndicatorStyle">@style/ReachNavIndicador</item>
+        <item name="labelVisibilityMode">labeled</item>
+        <item name="android:elevation">8dp</item>
+    </style>
+
+    <style name="ReachNavIndicador" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/azul_claro</item>
+    </style>
+</resources>

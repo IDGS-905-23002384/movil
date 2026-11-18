@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/bg_card"
+    android:elevation="1dp"
+    android:orientation="horizontal"
+    android:padding="12dp">
+
+    <ImageView
+        android:id="@+id/ivCarrito"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@drawable/bg_imagen"
+        android:importantForAccessibility="no"
+        android:padding="4dp"
+        android:scaleType="fitCenter" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvCarritoMarca"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:textColor="@color/azul"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvCarritoNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/texto"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvCarritoPrecio"
+            style="@style/ReachPequeno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_stepper"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btnCarritoMenos"
+                    android:layout_width="34dp"
+                    android:layout_height="match_parent"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Quitar uno"
+                    android:src="@drawable/ic_remove"
+                    app:tint="@color/texto" />
+
+                <TextView
+                    android:id="@+id/tvCarritoCantidad"
+                    android:layout_width="28dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/texto"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/btnCarritoMas"
+                    android:layout_width="34dp"
+                    android:layout_height="match_parent"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Agregar uno"
+                    android:src="@drawable/ic_add"
+                    app:tint="@color/texto" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvCarritoSubtotal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:textColor="@color/texto"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/btnCarritoEliminar"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="6dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Eliminar"
+                android:src="@drawable/ic_delete"
+                app:tint="@color/gris" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

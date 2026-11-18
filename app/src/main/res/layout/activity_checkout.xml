@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_header" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                style="@style/ReachTarjeta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView style="@style/ReachEyebrow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Paso 1" />
+                <TextView style="@style/ReachSeccion" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="¿Cómo quieres recibirlo?" />
+
+                <LinearLayout
+                    android:id="@+id/llMetodosEnvio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/cardDireccion"
+                style="@style/ReachTarjeta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical">
+
+                <TextView style="@style/ReachEyebrow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Paso 2" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/ReachSeccion"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Dirección de envío" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnCambiarDireccion"
+                        style="@style/ReachBotonTexto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cambiar" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="2dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_location"
+                        app:tint="@color/azul" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvDireccionNombre"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/texto"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvDireccionTexto"
+                            style="@style/ReachCuerpo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/ReachTarjeta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvPasoPago"
+                    style="@style/ReachEyebrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Paso 3" />
+
+                <TextView style="@style/ReachSeccion" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Pago con tarjeta" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/bg_aviso_azul"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_info"
+                        app:tint="@color/azul" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:text="@string/tarjeta_prueba"
+                        android:textColor="@color/azul"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <TextView style="@style/ReachEtiqueta" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Titular de la tarjeta" />
+
+                <EditText
+                    android:id="@+id/etTitular"
+                    style="@style/ReachCampo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="creditCardHolder"
+                    android:hint="Como aparece en la tarjeta"
+                    android:inputType="textPersonName|textCapCharacters" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/ReachEtiqueta"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Número de tarjeta" />
+
+                    <TextView
+                        android:id="@+id/tvMarcaTarjeta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/azul"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/etTarjeta"
+                    style="@style/ReachCampo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="creditCardNumber"
+                    android:digits="0123456789 "
+                    android:hint="0000 0000 0000 0000"
+                    android:inputType="number"
+                    android:maxLength="19" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView style="@style/ReachEtiqueta" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Vencimiento" />
+
+                        <EditText
+                            android:id="@+id/etVencimiento"
+                            style="@style/ReachCampo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:autofillHints="creditCardExpirationDate"
+                            android:digits="0123456789/"
+                            android:hint="MM/AA"
+                            android:inputType="number"
+                            android:maxLength="5" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView style="@style/ReachEtiqueta" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="CVV" />
+
+                        <EditText
+                            android:id="@+id/etCvv"
+                            style="@style/ReachCampo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:autofillHints="creditCardSecurityCode"
+                            android:hint="123"
+                            android:inputType="numberPassword"
+                            android:maxLength="4" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/ReachTarjeta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical">
+
+                <TextView style="@style/ReachSeccion" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Resumen de compra" />
+
+                <TextView
+                    android:id="@+id/tvCheckoutArticulos"
+                    style="@style/ReachPequeno"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp" />
+
+                <LinearLayout
+                    android:id="@+id/llTotalesCheckout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+                <TextView
+                    style="@style/ReachEtiqueta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Notas para tu pedido (opcional)" />
+
+                <EditText
+                    android:id="@+id/etNotas"
+                    style="@style/ReachCampo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="0dp"
+                    android:gravity="top"
+                    android:hint="Ej. Entregar por la tarde"
+                    android:importantForAutofill="no"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:maxLength="500"
+                    android:minLines="2" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/barraCheckout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_barra_inferior"
+        android:elevation="12dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="14dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView style="@style/ReachPequeno" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Total a pagar" />
+
+            <TextView
+                android:id="@+id/tvTotalPagar"
+                style="@style/ReachPrecio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPagar"
+            style="@style/ReachBotonPrimario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="28dp"
+            android:paddingEnd="28dp"
+            android:text="Pagar"
+            app:icon="@drawable/ic_lock"
+            app:iconTint="@color/white" />
+    </LinearLayout>
+</LinearLayout>

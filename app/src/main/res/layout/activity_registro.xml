@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/raizRegistro"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_login_gradient"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/headerRegistro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="24dp"
+        android:paddingBottom="24dp">
+
+        <ImageButton
+            android:id="@+id/btnAtras"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_chip_blanco_t"
+            android:contentDescription="@string/atras"
+            android:src="@drawable/ic_back"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:letterSpacing="0.12"
+            android:text="ÚNETE A REACH"
+            android:textColor="@color/cian"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:text="Crea tu cuenta"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:text="Compra más rápido y sigue tus pedidos en tiempo real."
+            android:textColor="#D0D6F0"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollRegistro"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/bg_login_card"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="24dp"
+            android:paddingTop="28dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="24dp">
+
+            <TextView style="@style/ReachEtiqueta" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Nombre completo" />
+
+            <EditText
+                android:id="@+id/etNombre"
+                style="@style/ReachCampo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="name"
+                android:hint="Ej. Carlos Sánchez"
+                android:inputType="textPersonName|textCapWords" />
+
+            <TextView style="@style/ReachEtiqueta" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Correo electrónico" />
+
+            <EditText
+                android:id="@+id/etEmail"
+                style="@style/ReachCampo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="emailAddress"
+                android:hint="tucorreo@ejemplo.com"
+                android:inputType="textEmailAddress" />
+
+            <TextView style="@style/ReachEtiqueta" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Teléfono (opcional)" />
+
+            <EditText
+                android:id="@+id/etTelefono"
+                style="@style/ReachCampo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="phone"
+                android:hint="10 dígitos"
+                android:inputType="phone"
+                android:maxLength="10" />
+
+            <TextView style="@style/ReachEtiqueta" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Contraseña" />
+
+            <EditText
+                android:id="@+id/etPassword"
+                style="@style/ReachCampo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:autofillHints="newPassword"
+                android:hint="Mínimo 8 caracteres"
+                android:inputType="textPassword" />
+
+            <TextView
+                style="@style/ReachPequeno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:text="Usa al menos 8 caracteres con letras y números." />
+
+            <TextView style="@style/ReachEtiqueta" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Confirmar contraseña" />
+
+            <EditText
+                android:id="@+id/etConfirmar"
+                style="@style/ReachCampo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="newPassword"
+                android:hint="Repite tu contraseña"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword" />
+
+            <CheckBox
+                android:id="@+id/cbTerminos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:buttonTint="@color/azul"
+                android:text="Acepto el aviso de privacidad y los términos de compra"
+                android:textColor="@color/texto_sec"
+                android:textSize="12sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRegistrar"
+                style="@style/ReachBotonPrimario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Crear cuenta" />
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/progresoRegistro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:indeterminate="true"
+                android:visibility="invisible"
+                app:indicatorColor="@color/azul"
+                app:trackCornerRadius="4dp" />
+
+            <TextView
+                android:id="@+id/tvIrLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="8dp"
+                android:text="¿Ya tienes cuenta? Inicia sesión"
+                android:textColor="@color/azul"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

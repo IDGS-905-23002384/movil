@@ -1,3 +1,16 @@
 <resources>
-    <string name="app_name">reach</string>
+    <string name="app_name">Reach</string>
+    <string name="nav_inicio">Inicio</string>
+    <string name="nav_catalogo">Catálogo</string>
+    <string name="nav_arma">Arma tu PC</string>
+    <string name="nav_carrito">Carrito</string>
+    <string name="nav_cuenta">Cuenta</string>
+    <string name="nav_panel">Panel</string>
+    <string name="nav_pedidos">Pedidos</string>
+    <string name="nav_productos">Productos</string>
+    <string name="nav_inventario">Inventario</string>
+    <string name="nav_mas">Más</string>
+    <string name="atras">Regresar</string>
+    <string name="buscar_hint">Buscar procesadores, gráficas, monitores…</string>
+    <string name="tarjeta_prueba">Pago simulado. Usa la tarjeta de prueba 4242 4242 4242 4242, cualquier fecha futura y CVV 123.</string>
 </resources>

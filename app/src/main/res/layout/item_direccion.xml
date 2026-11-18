@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cardDireccionItem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/bg_card_borde"
+    android:foreground="?attr/selectableItemBackground"
+    android:orientation="vertical"
+    android:padding="14dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvDirAlias"
+            style="@style/ReachBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_badge_azul_claro"
+            android:textColor="@color/azul" />
+
+        <TextView
+            android:id="@+id/tvDirPredeterminada"
+            style="@style/ReachBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/bg_badge_verde"
+            android:text="Predeterminada"
+            android:textColor="@color/verde_oscuro" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvDirNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/texto"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvDirTexto"
+        style="@style/ReachCuerpo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/llDirAcciones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:gravity="end"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDirPredeterminar"
+            style="@style/ReachBotonTexto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Usar por defecto"
+            android:textSize="12sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDirEditar"
+            style="@style/ReachBotonTexto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Editar"
+            android:textSize="12sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDirEliminar"
+            style="@style/ReachBotonTexto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Eliminar"
+            android:textColor="@color/rojo"
+            android:textSize="12sp" />
+    </LinearLayout>
+</LinearLayout>

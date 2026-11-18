@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:gravity="center_vertical"
+    android:minHeight="56dp"
+    android:orientation="horizontal"
+    android:paddingStart="16dp"
+    android:paddingTop="8dp"
+    android:paddingEnd="12dp"
+    android:paddingBottom="8dp">
+
+    <FrameLayout
+        android:id="@+id/flFilaIcono"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:background="@drawable/bg_circulo_azul">
+
+        <ImageView
+            android:id="@+id/ivFilaIcono"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:importantForAccessibility="no"
+            app:tint="@color/azul" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvFilaTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/texto"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvFilaSubtitulo"
+            style="@style/ReachPequeno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_chevron_right"
+        app:tint="@color/gris" />
+</LinearLayout>

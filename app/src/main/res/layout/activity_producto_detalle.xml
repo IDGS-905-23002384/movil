@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/raizDetalle"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_header" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollDetalle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="280dp"
+                    android:background="@drawable/bg_card"
+                    android:elevation="1dp">
+
+                    <ImageView
+                        android:id="@+id/ivDetalle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:importantForAccessibility="no"
+                        android:padding="12dp"
+                        android:scaleType="fitCenter" />
+
+                    <TextView
+                        android:id="@+id/tvDetalleDescuento"
+                        style="@style/ReachBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="12dp"
+                        android:background="@drawable/bg_badge_oferta"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:visibility="gone" />
+                </FrameLayout>
+
+                <LinearLayout
+                    style="@style/ReachTarjeta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvDetalleMarca"
+                        style="@style/ReachEyebrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/tvDetalleNombre"
+                        style="@style/ReachTitulo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp" />
+
+                    <TextView
+                        android:id="@+id/tvDetalleSku"
+                        style="@style/ReachPequeno"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:gravity="bottom"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvDetallePrecio"
+                            style="@style/ReachPrecio"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="26sp" />
+
+                        <TextView
+                            android:id="@+id/tvDetallePrecioAnterior"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginBottom="4dp"
+                            android:textColor="@color/gris"
+                            android:textSize="14sp"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+                    <TextView
+                        style="@style/ReachPequeno"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="IVA incluido · Meses sin intereses con tarjetas participantes" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="14dp"
+                        android:layout_marginBottom="14dp"
+                        android:background="@color/borde" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_inventory"
+                            app:tint="@color/texto_ter" />
+
+                        <TextView
+                            android:id="@+id/tvDetalleStock"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_truck"
+                            app:tint="@color/texto_ter" />
+
+                        <TextView
+                            android:id="@+id/tvDetalleEnvio"
+                            style="@style/ReachCuerpo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/cardEspecificaciones"
+                    style="@style/ReachTarjeta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/ReachSeccion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="Especificaciones" />
+
+                    <LinearLayout
+                        android:id="@+id/llEspecificaciones"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/ReachTarjeta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/ReachSeccion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Descripción" />
+
+                    <TextView
+                        android:id="@+id/tvDetalleDescripcion"
+                        style="@style/ReachCuerpo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <ProgressBar
+            android:id="@+id/progresoDetalle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/azul" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/barraDetalle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_barra_inferior"
+        android:elevation="12dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="14dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_stepper"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btnMenos"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Quitar uno"
+                android:src="@drawable/ic_remove"
+                app:tint="@color/texto" />
+
+            <TextView
+                android:id="@+id/tvCantidad"
+                android:layout_width="32dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="@color/texto"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/btnMas"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Agregar uno"
+                android:src="@drawable/ic_add"
+                app:tint="@color/texto" />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAgregarCarrito"
+            style="@style/ReachBotonPrimario"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:text="Agregar al carrito"
+            app:icon="@drawable/ic_cart"
+            app:iconGravity="textStart"
+            app:iconTint="@color/white" />
+    </LinearLayout>
+</LinearLayout>

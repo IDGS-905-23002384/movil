@@ -1,81 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/raizLogin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_login_gradient">
 
-    <!-- Encabezado de Marca -->
     <LinearLayout
         android:id="@+id/layoutBrand"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/ivLogo"
             android:layout_width="26dp"
             android:layout_height="26dp"
+            android:contentDescription="@string/app_name"
             android:src="@drawable/logo_bars" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:letterSpacing="-0.03"
             android:text="Reach"
             android:textColor="@android:color/white"
             android:textSize="24sp"
-            android:textStyle="bold"
-            android:letterSpacing="-0.03"
-            android:layout_marginStart="10dp" />
+            android:textStyle="bold" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvExplorar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/bg_chip_blanco_t"
+        android:paddingStart="14dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="14dp"
+        android:paddingBottom="8dp"
+        android:text="Explorar tienda"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/layoutBrand"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/layoutBrand" />
 
     <TextView
         android:id="@+id/tvEyebrow"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="TODO TU NEGOCIO EN UN LUGAR"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="24dp"
+        android:letterSpacing="0.12"
+        android:text="TU TIENDA DE TECNOLOGÍA"
         android:textColor="#69E4FF"
         android:textSize="11sp"
         android:textStyle="bold"
-        android:letterSpacing="0.12"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/flOrbitContainer"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layoutBrand" />
 
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="12dp"
         android:text="Hola de nuevo"
         android:textColor="@android:color/white"
         android:textSize="32sp"
         android:textStyle="bold"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/flOrbitContainer"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvEyebrow" />
 
     <TextView
         android:id="@+id/tvSubtitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Administra, vende y haz crecer tu tienda de tecnología."
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="24dp"
+        android:text="Compra componentes, arma tu PC y sigue tus pedidos."
         android:textColor="#D0D6F0"
         android:textSize="13sp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginTop="6dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/flOrbitContainer"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
     <FrameLayout
@@ -83,9 +103,9 @@
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toTopOf="@id/cardForm"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvEyebrow"
-        app:layout_constraintBottom_toTopOf="@id/cardForm">
+        app:layout_constraintTop_toTopOf="@id/tvEyebrow">
 
         <View
             android:layout_width="match_parent"
@@ -97,9 +117,10 @@
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_gravity="center"
+            android:importantForAccessibility="no"
+            android:scaleType="centerInside"
             android:src="@drawable/circuit"
-            app:tint="#69E4FF"
-            android:scaleType="centerInside" />
+            app:tint="#69E4FF" />
     </FrameLayout>
 
     <LinearLayout
@@ -110,69 +131,68 @@
         android:orientation="vertical"
         android:paddingHorizontal="24dp"
         android:paddingTop="28dp"
-        android:paddingBottom="24dp"
+        android:paddingBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
+            style="@style/ReachEtiqueta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Correo electrónico"
-            android:textColor="#1F2937"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="6dp" />
+            android:text="Correo electrónico" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:layout_marginBottom="14dp"
             android:background="@drawable/bg_input"
-            android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:paddingHorizontal="14dp"
-            android:layout_marginBottom="14dp">
+            android:orientation="horizontal"
+            android:paddingHorizontal="14dp">
 
             <ImageView
                 android:layout_width="18dp"
                 android:layout_height="18dp"
-                android:src="@android:drawable/ic_menu_myplaces"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_mail"
                 app:tint="#4B5563" />
 
             <EditText
                 android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:autofillHints="emailAddress"
                 android:background="@null"
-                android:text="admin@reach.mx"
+                android:hint="tucorreo@ejemplo.com"
+                android:imeOptions="actionNext"
                 android:inputType="textEmailAddress"
-                android:textSize="14sp"
+                android:paddingStart="10dp"
                 android:textColor="#111827"
-                android:paddingStart="10dp" />
+                android:textColorHint="@color/gris"
+                android:textSize="14sp" />
         </LinearLayout>
 
         <TextView
+            style="@style/ReachEtiqueta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Contraseña"
-            android:textColor="#1F2937"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="6dp" />
+            android:text="Contraseña" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:layout_marginBottom="12dp"
             android:background="@drawable/bg_input"
-            android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:paddingHorizontal="14dp"
-            android:layout_marginBottom="12dp">
+            android:orientation="horizontal"
+            android:paddingHorizontal="14dp">
 
             <ImageView
                 android:layout_width="18dp"
                 android:layout_height="18dp"
-                android:src="@android:drawable/ic_lock_lock"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_lock"
                 app:tint="#4B5563" />
 
             <EditText
@@ -180,30 +200,36 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:autofillHints="password"
                 android:background="@null"
-                android:text="reach2025"
+                android:hint="Tu contraseña"
+                android:imeOptions="actionDone"
                 android:inputType="textPassword"
-                android:textSize="14sp"
+                android:paddingStart="10dp"
                 android:textColor="#111827"
-                android:paddingStart="10dp" />
+                android:textColorHint="@color/gris"
+                android:textSize="14sp" />
 
             <ImageView
                 android:id="@+id/ivTogglePassword"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:src="@android:drawable/ic_menu_view"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:alpha="0.5"
+                android:contentDescription="Mostrar contraseña"
+                android:src="@drawable/ic_visibility"
                 app:tint="#4B5563" />
         </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="16dp">
 
             <CheckBox
                 android:id="@+id/cbRemember"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/azul"
                 android:checked="true"
                 android:text="Recordarme"
                 android:textColor="#374151"
@@ -215,40 +241,63 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
+                android:padding="4dp"
                 android:text="¿Olvidaste tu contraseña?"
                 android:textColor="#1237DB"
                 android:textSize="12sp"
                 android:textStyle="bold" />
         </RelativeLayout>
 
-        <!-- Boton Iniciar Sesion -->
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnLogin"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:backgroundTint="#1237DB"
-            android:text="Iniciar sesión      ➔"
-            android:textColor="@android:color/white"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="14dp"
-            app:cornerRadius="14dp" />
-
-        <LinearLayout
+            style="@style/ReachBotonPrimario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:text="Iniciar sesión" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progresoLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:indeterminate="true"
+            android:visibility="invisible"
+            app:indicatorColor="@color/azul"
+            app:trackCornerRadius="4dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="6dp"
             android:gravity="center"
-            android:layout_gravity="center_horizontal">
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Acceso seguro y cifrado"
-                android:textColor="#9CA3AF"
-                android:textSize="11sp" />
+                android:text="¿Eres nuevo?"
+                android:textColor="@color/texto_ter"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tvCrearCuenta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="6dp"
+                android:text="Crea tu cuenta"
+                android:textColor="@color/azul"
+                android:textSize="13sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Acceso seguro y cifrado"
+            android:textColor="#9CA3AF"
+            android:textSize="11sp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_header" />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refrescarPedido"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollPedido"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/contenidoPedido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:visibility="invisible">
+
+                <LinearLayout
+                    android:id="@+id/cardExito"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/bg_aviso_verde"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="14dp"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_check_circle"
+                        app:tint="@color/verde" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="¡Gracias por tu compra!"
+                            android:textColor="@color/verde_oscuro"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvExitoMensaje"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/verde_oscuro"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/ReachTarjeta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvDetFolio"
+                                style="@style/ReachSeccion"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                            <TextView
+                                android:id="@+id/tvDetFecha"
+                                style="@style/ReachPequeno"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tvDetEstado"
+                            style="@style/ReachBadge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llTracker"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal" />
+
+                    <TextView
+                        android:id="@+id/tvDetEntrega"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/bg_aviso_azul"
+                        android:padding="10dp"
+                        android:textColor="@color/azul"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/cardAdmin"
+                    style="@style/ReachTarjeta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView style="@style/ReachEyebrow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Gestión del pedido" />
+
+                    <TextView
+                        android:id="@+id/tvAdminCliente"
+                        style="@style/ReachCuerpo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAvanzarArmado"
+                        style="@style/ReachBotonPrimario"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        app:icon="@drawable/ic_build"
+                        app:iconTint="@color/white" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAvanzarEnvio"
+                        style="@style/ReachBotonPrimario"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:icon="@drawable/ic_truck"
+                        app:iconTint="@color/white" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnCancelarAdmin"
+                        style="@style/ReachBotonPeligro"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Cancelar pedido y devolver inventario" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/ReachTarjeta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="vertical">
+
+                    <TextView style="@style/ReachSeccion" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Seguimiento" />
+
+                    <LinearLayout
+                        android:id="@+id/llSeguimiento"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/ReachTarjeta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="vertical">
+
+                    <TextView style="@style/ReachSeccion" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Entrega" />
+
+                    <TextView
+                        android:id="@+id/tvDetMetodo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:textColor="@color/texto"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvDetDireccion"
+                        style="@style/ReachCuerpo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp" />
+
+                    <LinearLayout
+                        android:id="@+id/llGuia"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_input"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="12dp"
+                        android:paddingTop="6dp"
+                        android:paddingEnd="6dp"
+                        android:paddingBottom="6dp"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView style="@style/ReachPequeno" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Número de guía" />
+
+                            <TextView
+                                android:id="@+id/tvDetGuia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/texto"
+                                android:textIsSelectable="true"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <ImageButton
+                            android:id="@+id/btnCopiarGuia"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:contentDescription="Copiar guía"
+                            android:src="@drawable/ic_copy"
+                            app:tint="@color/azul" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/ReachTarjeta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="vertical">
+
+                    <TextView style="@style/ReachSeccion" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Productos" />
+
+                    <LinearLayout
+                        android:id="@+id/llDetProductos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:orientation="vertical" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/ReachTarjeta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="vertical">
+
+                    <TextView style="@style/ReachSeccion" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Pago" />
+
+                    <TextView
+                        android:id="@+id/tvDetTarjeta"
+                        style="@style/ReachCuerpo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="8dp" />
+
+                    <LinearLayout
+                        android:id="@+id/llDetTotales"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" />
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCancelarPedido"
+                    style="@style/ReachBotonPeligro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Cancelar pedido"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</LinearLayout>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="16dp"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/vSegPunto"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/bg_circulo_azul_solido" />
+
+        <View
+            android:id="@+id/vSegLinea"
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_linea_tiempo" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingBottom="14dp">
+
+        <TextView
+            android:id="@+id/tvSegTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/texto"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvSegDescripcion"
+            style="@style/ReachCuerpo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvSegFecha"
+            style="@style/ReachPequeno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp" />
+    </LinearLayout>
+</LinearLayout>

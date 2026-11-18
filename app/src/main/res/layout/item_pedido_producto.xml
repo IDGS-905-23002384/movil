@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingTop="6dp"
+    android:paddingBottom="6dp">
+
+    <ImageView
+        android:id="@+id/ivPp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_imagen"
+        android:importantForAccessibility="no"
+        android:padding="3dp"
+        android:scaleType="fitCenter" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvPpNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/texto"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvPpCantidad"
+            style="@style/ReachPequeno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvPpSubtotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/texto"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+</LinearLayout>

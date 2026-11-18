@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:layout_weight="1"
+    android:background="@drawable/bg_card"
+    android:elevation="1dp"
+    android:foreground="?attr/selectableItemBackground"
+    android:orientation="vertical"
+    android:padding="14dp">
+
+    <FrameLayout
+        android:id="@+id/flKpiIcono"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:background="@drawable/bg_circulo_azul">
+
+        <ImageView
+            android:id="@+id/ivKpi"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_gravity="center"
+            android:importantForAccessibility="no"
+            app:tint="@color/azul" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tvKpiValor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/texto"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvKpiEtiqueta"
+        style="@style/ReachPequeno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

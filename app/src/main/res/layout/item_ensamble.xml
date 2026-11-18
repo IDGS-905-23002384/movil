@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/bg_card"
+    android:elevation="1dp"
+    android:orientation="vertical"
+    android:padding="14dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_circulo_azul">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_build"
+                app:tint="@color/azul" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvEnsambleNombre"
+                style="@style/ReachSeccion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tvEnsambleDetalle"
+                style="@style/ReachPequeno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/btnEnsambleEliminar"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Eliminar ensamble"
+            android:src="@drawable/ic_delete"
+            app:tint="@color/gris" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llEnsamblePiezas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:background="@color/borde" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/ReachCuerpo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Total con ensamble y pruebas" />
+
+        <TextView
+            android:id="@+id/tvEnsambleTotal"
+            style="@style/ReachPrecio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

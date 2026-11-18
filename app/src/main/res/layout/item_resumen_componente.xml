@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp">
+
+    <ImageView
+        android:id="@+id/ivRc"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:background="@drawable/bg_imagen"
+        android:importantForAccessibility="no"
+        android:padding="3dp"
+        android:scaleType="fitCenter" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvRcPaso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:textColor="@color/texto_ter"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvRcNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/texto"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvRcPrecio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/texto"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+</LinearLayout>

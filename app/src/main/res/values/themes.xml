@@ -1,9 +1,40 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.Reach" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<resources>
+    <style name="Base.Theme.Reach" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/azul</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/azul_claro</item>
+        <item name="colorOnPrimaryContainer">@color/azul</item>
+        <item name="colorSecondary">@color/azul</item>
+        <item name="colorSecondaryContainer">@color/azul_claro</item>
+        <item name="colorOnSecondaryContainer">@color/azul</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/texto</item>
+        <item name="colorError">@color/rojo</item>
+        <item name="android:colorBackground">@color/fondo</item>
+        <item name="android:windowBackground">@color/fondo</item>
+        <item name="android:textColorPrimary">@color/texto</item>
+        <item name="android:textColorSecondary">@color/texto_sec</item>
+        <item name="materialAlertDialogTheme">@style/ReachDialogo</item>
+        <item name="bottomSheetDialogTheme">@style/ReachSheet</item>
     </style>
 
     <style name="Theme.Reach" parent="Base.Theme.Reach" />
+
+    <style name="ReachDialogo" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorPrimary">@color/azul</item>
+        <item name="shapeAppearanceOverlay">@style/ReachDialogoForma</item>
+    </style>
+
+    <style name="ReachDialogoForma" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20dp</item>
+    </style>
+
+    <style name="ReachSheet" parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/ReachSheetModal</item>
+    </style>
+
+    <style name="ReachSheetModal" parent="Widget.Material3.BottomSheet.Modal">
+        <item name="backgroundTint">@color/white</item>
+    </style>
 </resources>

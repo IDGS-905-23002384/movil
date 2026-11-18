@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/bg_card_borde"
+    android:foreground="?attr/selectableItemBackground"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="12dp">
+
+    <ImageView
+        android:id="@+id/ivMetodoRadio"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_check_circle"
+        app:tint="@color/borde" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvMetodoNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/texto"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvMetodoDescripcion"
+            style="@style/ReachPequeno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvMetodoCosto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/texto"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+</LinearLayout>
