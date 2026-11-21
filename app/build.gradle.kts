@@ -14,8 +14,8 @@ android {
         applicationId = "com.maithear.reach"
         minSdk = 24
         targetSdk = 37
-        versionCode = 3
-        versionName = "2.1"
+        versionCode = 4
+        versionName = "2.2"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "API_BASE_URL", "\"http://192.168.1.9:5133/\"")
@@ -53,6 +53,7 @@ dependencies {
     implementation(libs.okhttp)
     implementation(libs.glide)
     implementation(libs.androidx.work.runtime.ktx)
+    implementation(libs.osmdroid.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)

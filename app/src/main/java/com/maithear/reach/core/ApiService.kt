@@ -169,6 +169,9 @@ interface ApiService {
     @POST("api/admin/inventario/movimientos")
     suspend fun registrarMovimiento(@Body body: MovimientoCrear): Movimiento
 
+    @GET("api/sucursales")
+    suspend fun sucursales(): List<Sucursal>
+
     @GET("api/notificaciones")
     suspend fun notificaciones(
         @Query("soloNoLeidas") soloNoLeidas: Boolean = false,

@@ -20,6 +20,44 @@
             android:layout_margin="16dp"
             android:orientation="vertical">
 
+            <TextView style="@style/ReachEtiqueta" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Ubicación en el mapa" />
+
+            <include
+                android:id="@+id/mapaMiniDireccion"
+                layout="@layout/view_mapa_tarjeta"
+                android:layout_width="match_parent"
+                android:layout_height="150dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="14dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvUbicacionEstado"
+                    style="@style/ReachPequeno"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Ubica tu domicilio para que el repartidor llegue sin problemas." />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnUbicarMapa"
+                    style="@style/ReachBotonContorno"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:minHeight="40dp"
+                    android:text="Ubicar"
+                    android:textSize="12sp"
+                    app:icon="@drawable/ic_location"
+                    app:iconSize="16dp"
+                    app:iconTint="@color/azul" />
+            </LinearLayout>
+
             <TextView style="@style/ReachEtiqueta" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Tipo de dirección" />
 
             <com.google.android.material.chip.ChipGroup

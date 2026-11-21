@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardSucursal"
+    android:layout_width="290dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp"
+    android:background="@drawable/bg_card_borde"
+    android:elevation="6dp"
+    android:foreground="?attr/selectableItemBackground"
+    android:orientation="vertical"
+    android:padding="14dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvSucNombre"
+            style="@style/ReachSeccion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tvSucDistancia"
+            style="@style/ReachBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_badge_azul_claro"
+            android:textColor="@color/azul"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvSucDireccion"
+        style="@style/ReachCuerpo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp" />
+
+    <TextView
+        android:id="@+id/tvSucHorario"
+        style="@style/ReachPequeno"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSucComoLlegar"
+            style="@style/ReachBotonContorno"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:minHeight="40dp"
+            android:text="Cómo llegar"
+            android:textSize="12sp"
+            app:icon="@drawable/ic_direcciones"
+            app:iconSize="16dp"
+            app:iconTint="@color/azul" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSucLlamar"
+            style="@style/ReachBotonTexto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:minHeight="40dp"
+            android:text="Llamar"
+            android:textSize="12sp"
+            app:icon="@drawable/ic_telefono"
+            app:iconSize="16dp"
+            app:iconTint="@color/azul" />
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSucElegir"
+        style="@style/ReachBotonPrimario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:minHeight="44dp"
+        android:text="Recoger aquí"
+        android:visibility="gone" />
+</LinearLayout>

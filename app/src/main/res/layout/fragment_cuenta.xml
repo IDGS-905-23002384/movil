@@ -77,6 +77,7 @@
             <include android:id="@+id/filaNotificaciones" layout="@layout/view_fila_menu" />
             <include android:id="@+id/filaPedidos" layout="@layout/view_fila_menu" />
             <include android:id="@+id/filaDirecciones" layout="@layout/view_fila_menu" />
+            <include android:id="@+id/filaSucursales" layout="@layout/view_fila_menu" />
             <include android:id="@+id/filaPerfil" layout="@layout/view_fila_menu" />
             <include android:id="@+id/filaPassword" layout="@layout/view_fila_menu" />
             <include android:id="@+id/filaPanel" layout="@layout/view_fila_menu" />
