@@ -66,6 +66,22 @@ object Sesion {
     val ultimoEmail: String?
         get() = prefs.getString(K_EMAIL, null)
 
+    fun ultimaNotificacion(): Int {
+        val u = usuario ?: return -1
+        return prefs.getInt("ultima_notif_${u.id}", -1)
+    }
+
+    fun guardarUltimaNotificacion(id: Int) {
+        val u = usuario ?: return
+        prefs.edit().putInt("ultima_notif_${u.id}", id).apply()
+    }
+
+    var permisoNotificacionesSolicitado: Boolean
+        get() = prefs.getBoolean("permiso_notif", false)
+        set(valor) {
+            prefs.edit().putBoolean("permiso_notif", valor).apply()
+        }
+
     fun guardar(auth: AuthRespuesta, recordar: Boolean) {
         tokenMemoria = auth.token
         usuario = auth.usuario

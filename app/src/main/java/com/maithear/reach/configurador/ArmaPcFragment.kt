@@ -201,7 +201,7 @@ class ArmaPcFragment : Fragment(), Refrescable {
         if (lista.isEmpty()) {
             raiz.mostrarVacio(
                 R.drawable.ic_chip,
-                "Sin listaOpciones compatibles",
+                "Sin opciones compatibles",
                 "Ninguna pieza de este paso es compatible con lo que elegiste. Cambia algún componente anterior."
             )
         } else {

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:name=".ReachApp"
@@ -38,6 +39,7 @@
         <activity android:name=".admin.AdminActivity" android:exported="false" android:windowSoftInputMode="adjustPan" />
         <activity android:name=".admin.FormProductoActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
         <activity android:name=".admin.CatalogosActivity" android:exported="false" />
+        <activity android:name=".notificaciones.NotificacionesActivity" android:exported="false" android:launchMode="singleTop" />
 
     </application>
 

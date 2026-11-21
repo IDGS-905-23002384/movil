@@ -375,6 +375,18 @@ data class AlertaStock(
     val categoria: String
 )
 
+data class Notificacion(
+    val id: Int,
+    val titulo: String,
+    val mensaje: String,
+    val tipo: String,
+    val pedidoId: Int?,
+    val leida: Boolean,
+    val fecha: String
+)
+
+data class ConteoNotificaciones(val noLeidas: Int, val ultimoId: Int)
+
 object TiposComponente {
     const val CPU = "CPU"
     const val MOTHERBOARD = "MOTHERBOARD"

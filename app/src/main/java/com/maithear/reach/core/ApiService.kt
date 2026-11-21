@@ -169,6 +169,25 @@ interface ApiService {
     @POST("api/admin/inventario/movimientos")
     suspend fun registrarMovimiento(@Body body: MovimientoCrear): Movimiento
 
+    @GET("api/notificaciones")
+    suspend fun notificaciones(
+        @Query("soloNoLeidas") soloNoLeidas: Boolean = false,
+        @Query("pagina") pagina: Int = 1,
+        @Query("tamano") tamano: Int = 50
+    ): Pagina<Notificacion>
+
+    @GET("api/notificaciones/conteo")
+    suspend fun conteoNotificaciones(): ConteoNotificaciones
+
+    @GET("api/notificaciones/nuevas")
+    suspend fun notificacionesNuevas(@Query("despuesDe") despuesDe: Int): List<Notificacion>
+
+    @PUT("api/notificaciones/{id}/leida")
+    suspend fun marcarNotificacionLeida(@Path("id") id: Int): Response<Unit>
+
+    @PUT("api/notificaciones/leidas")
+    suspend fun marcarTodasLeidas(): Response<Unit>
+
     @GET("api/admin/proveedores")
     suspend fun proveedores(): List<Proveedor>
 

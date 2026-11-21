@@ -94,6 +94,10 @@
                             android:textSize="11sp"
                             android:textStyle="bold" />
                     </LinearLayout>
+
+                    <include
+                        android:id="@+id/campanaInicio"
+                        layout="@layout/view_campana" />
                 </LinearLayout>
 
                 <LinearLayout

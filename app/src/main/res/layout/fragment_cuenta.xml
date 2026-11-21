@@ -74,6 +74,7 @@
             android:paddingTop="6dp"
             android:paddingBottom="6dp">
 
+            <include android:id="@+id/filaNotificaciones" layout="@layout/view_fila_menu" />
             <include android:id="@+id/filaPedidos" layout="@layout/view_fila_menu" />
             <include android:id="@+id/filaDirecciones" layout="@layout/view_fila_menu" />
             <include android:id="@+id/filaPerfil" layout="@layout/view_fila_menu" />

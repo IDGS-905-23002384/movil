@@ -14,6 +14,7 @@ import com.maithear.reach.core.Sesion
 import com.maithear.reach.core.api
 import com.maithear.reach.core.siOk
 import com.maithear.reach.cuenta.CuentaFragment
+import com.maithear.reach.notificaciones.ProgramadorNotificaciones
 import kotlinx.coroutines.launch
 
 class TiendaActivity : BaseActivity() {
@@ -30,6 +31,7 @@ class TiendaActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tienda)
         navegacion = findViewById(R.id.navTienda)
+        prepararNotificaciones()
 
         navegacion.setOnItemSelectedListener { item ->
             mostrar(item.itemId)
@@ -53,6 +55,7 @@ class TiendaActivity : BaseActivity() {
     override fun onResume() {
         super.onResume()
         refrescarBadge()
+        ProgramadorNotificaciones.revisarAhora(this)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
