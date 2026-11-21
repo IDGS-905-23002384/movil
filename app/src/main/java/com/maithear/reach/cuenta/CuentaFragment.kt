@@ -32,6 +32,8 @@ import com.maithear.reach.core.siError
 import com.maithear.reach.core.siOk
 import com.maithear.reach.core.toast
 import com.maithear.reach.core.visible
+import com.maithear.reach.notificaciones.NotificacionesActivity
+import com.maithear.reach.notificaciones.ProgramadorNotificaciones
 import com.maithear.reach.pedidos.PedidosActivity
 import com.maithear.reach.tienda.TiendaActivity
 import kotlinx.coroutines.launch
@@ -80,6 +82,9 @@ class CuentaFragment : Fragment(), Refrescable {
         }
         raiz.findViewById<View>(R.id.btnCuentaIniciar).visible(!activa)
 
+        raiz.findViewById<View>(R.id.filaNotificaciones).configurarFila(R.drawable.ic_campana, "Notificaciones", "Avisos de pedidos y de la tienda") {
+            startActivity(Intent(requireContext(), NotificacionesActivity::class.java))
+        }
         val filaPedidos = raiz.findViewById<View>(R.id.filaPedidos)
         val filaDirecciones = raiz.findViewById<View>(R.id.filaDirecciones)
         val filaPerfil = raiz.findViewById<View>(R.id.filaPerfil)
@@ -120,6 +125,7 @@ class CuentaFragment : Fragment(), Refrescable {
         filaServidor.configurarFila(R.drawable.ic_tune, "Servidor de la API", Sesion.baseUrl) { configurarServidor() }
         filaCerrar.configurarFila(R.drawable.ic_logout, "Cerrar sesión", peligro = true) {
             requireContext().confirmar("Cerrar sesión", "¿Quieres salir de tu cuenta?", "Salir") {
+                ProgramadorNotificaciones.cancelar(requireContext())
                 Sesion.cerrar()
                 startActivity(Intent(requireContext(), MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))
             }

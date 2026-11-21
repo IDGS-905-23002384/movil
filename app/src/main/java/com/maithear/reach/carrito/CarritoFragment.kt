@@ -72,7 +72,7 @@ class CarritoFragment : Fragment(), Refrescable {
         }
 
         view.findViewById<View>(R.id.btnVaciarCarrito).setOnClickListener {
-            requireContext().confirmar("Vaciar carritoActual", "¿Quieres quitar todos los productos?", "Vaciar") { vaciar() }
+            requireContext().confirmar("Vaciar carrito", "¿Quieres quitar todos los productos?", "Vaciar") { vaciar() }
         }
         view.findViewById<MaterialButton>(R.id.btnContinuarCompra).setOnClickListener {
             startActivity(Intent(requireContext(), CheckoutActivity::class.java))
@@ -100,7 +100,7 @@ class CarritoFragment : Fragment(), Refrescable {
         raiz.findViewById<View>(R.id.barraCarrito).visible(false)
         raiz.findViewById<View>(R.id.btnVaciarCarrito).visible(false)
         raiz.findViewById<TextView>(R.id.tvCarritoConteo).text = "Inicia sesión para comprar"
-        raiz.mostrarVacio(R.drawable.ic_person, "Tu carrito actual te espera", "Inicia sesión para guardar productos y completar tu compra.", "Iniciar sesión") {
+        raiz.mostrarVacio(R.drawable.ic_person, "Tu carrito te espera", "Inicia sesión para guardar productos y completar tu compra.", "Iniciar sesión") {
             activity?.requiereSesion()
         }
     }
@@ -114,7 +114,7 @@ class CarritoFragment : Fragment(), Refrescable {
             when (r) {
                 is Resultado.Ok -> pintar(r.dato)
                 is Resultado.Error -> if (carritoActual == null) {
-                    raiz.mostrarVacio(R.drawable.ic_warning, "No pudimos cargar tu carritoActual", r.mensaje, "Reintentar") { cargar() }
+                    raiz.mostrarVacio(R.drawable.ic_warning, "No pudimos cargar tu carrito", r.mensaje, "Reintentar") { cargar() }
                 } else {
                     requireContext().toast(r.mensaje)
                 }
@@ -166,7 +166,7 @@ class CarritoFragment : Fragment(), Refrescable {
         raiz.findViewById<View>(R.id.btnVaciarCarrito).visible(!vacio)
         raiz.findViewById<View>(R.id.barraCarrito).visible(!vacio)
         if (vacio) {
-            raiz.mostrarVacio(R.drawable.ic_cart, "Tu carritoActual está vacío", "Explora el catálogo o arma tu PC a la medida.", "Explorar catálogo") {
+            raiz.mostrarVacio(R.drawable.ic_cart, "Tu carrito está vacío", "Explora el catálogo o arma tu PC a la medida.", "Explorar catálogo") {
                 (activity as? TiendaActivity)?.irA(R.id.nav_catalogo)
             }
             return

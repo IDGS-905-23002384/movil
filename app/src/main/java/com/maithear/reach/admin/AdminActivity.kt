@@ -11,6 +11,7 @@ import com.maithear.reach.core.Refrescable
 import com.maithear.reach.core.Sesion
 import com.maithear.reach.core.toast
 import com.maithear.reach.cuenta.CuentaFragment
+import com.maithear.reach.notificaciones.ProgramadorNotificaciones
 
 class AdminActivity : BaseActivity() {
 
@@ -31,6 +32,7 @@ class AdminActivity : BaseActivity() {
         }
         setContentView(R.layout.activity_admin)
         navegacion = findViewById(R.id.navAdmin)
+        prepararNotificaciones()
         navegacion.setOnItemSelectedListener { item ->
             mostrar(item.itemId)
             true
@@ -41,6 +43,11 @@ class AdminActivity : BaseActivity() {
         val inicial = savedInstanceState?.getInt(ESTADO_TAB) ?: R.id.nav_panel
         navegacion.selectedItemId = inicial
         if (inicial == R.id.nav_panel) mostrar(inicial)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (Sesion.esPersonal) ProgramadorNotificaciones.revisarAhora(this)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

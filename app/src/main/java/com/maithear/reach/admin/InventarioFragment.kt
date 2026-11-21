@@ -156,7 +156,7 @@ class InventarioFragment : Fragment(), Refrescable {
                     if (r.dato.total == 0) raiz.mostrarVacio(R.drawable.ic_inventory, "Sin movimientos", "Aún no hay movimientos registrados.") else raiz.ocultarVacio()
                 }
                 is Resultado.Error -> if (numero == 1) {
-                    raiz.mostrarVacio(R.drawable.ic_warning, "No pudimos cargar el adKardex", r.mensaje, "Reintentar") { recargar() }
+                    raiz.mostrarVacio(R.drawable.ic_warning, "No pudimos cargar el kardex", r.mensaje, "Reintentar") { recargar() }
                 }
             }
         }

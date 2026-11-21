@@ -92,7 +92,7 @@ class CheckoutActivity : BaseActivity() {
             }
             val c = (rCarrito as Resultado.Ok).dato
             if (c.items.isEmpty()) {
-                toast("Tu carritoActual está vacío")
+                toast("Tu carrito está vacío")
                 finish()
                 return@launch
             }

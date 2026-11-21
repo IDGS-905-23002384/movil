@@ -22,6 +22,7 @@ import com.maithear.reach.core.mostrarVacio
 import com.maithear.reach.core.ocultarVacio
 import com.maithear.reach.core.saludo
 import com.maithear.reach.core.visible
+import com.maithear.reach.notificaciones.Campana
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
@@ -46,6 +47,7 @@ class InicioFragment : Fragment(), Refrescable {
         refrescar.setColorSchemeResources(R.color.azul)
         refrescar.setOnRefreshListener { cargar() }
 
+        Campana.configurar(view.findViewById(R.id.campanaInicio), requireActivity())
         view.findViewById<View>(R.id.buscadorInicio).setOnClickListener { tienda?.abrirCatalogo(enfocarBusqueda = true) }
         view.findViewById<View>(R.id.cardBannerArma).setOnClickListener { tienda?.irA(R.id.nav_arma) }
         view.findViewById<View>(R.id.tvVerOfertas).setOnClickListener { tienda?.abrirCatalogo(soloOfertas = true) }
@@ -83,6 +85,19 @@ class InicioFragment : Fragment(), Refrescable {
     override fun alMostrar() {
         view?.let { pintarUsuario(it) }
         if (!cargado) cargar()
+        actualizarCampana()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (!isHidden) actualizarCampana()
+    }
+
+    private fun actualizarCampana() {
+        val raiz = view ?: return
+        val campana = raiz.findViewById<View>(R.id.campanaInicio)
+        campana.visible(Sesion.activa)
+        viewLifecycleOwner.lifecycleScope.launch { Campana.actualizar(campana) }
     }
 
     private fun pintarUsuario(view: View) {

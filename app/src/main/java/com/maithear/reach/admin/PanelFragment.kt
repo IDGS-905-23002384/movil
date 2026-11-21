@@ -23,6 +23,7 @@ import com.maithear.reach.core.insetsSistema
 import com.maithear.reach.core.mxn
 import com.maithear.reach.core.saludo
 import com.maithear.reach.core.toast
+import com.maithear.reach.notificaciones.Campana
 import com.maithear.reach.pedidos.PedidoAdapter
 import com.maithear.reach.pedidos.PedidoDetalleActivity
 import kotlinx.coroutines.launch
@@ -49,6 +50,7 @@ class PanelFragment : Fragment(), Refrescable {
         view.findViewById<TextView>(R.id.tvPanelNombre).text = usuario?.nombre.orEmpty()
         view.findViewById<TextView>(R.id.tvPanelRol).text = usuario?.rol.orEmpty()
         view.findViewById<View>(R.id.tvVerPedidos).setOnClickListener { admin?.abrirPedidos(null) }
+        Campana.configurar(view.findViewById(R.id.campanaPanel), requireActivity())
 
         kpi(view, R.id.kpiPorEnviar, R.drawable.ic_truck, R.color.azul, R.drawable.bg_circulo_azul, "Por enviar") { admin?.abrirPedidos("pendientes") }
         kpi(view, R.id.kpiEnsamble, R.drawable.ic_build, R.color.morado, R.drawable.bg_badge_morado, "En ensamble") { admin?.abrirPedidos("ensamble") }
@@ -60,6 +62,12 @@ class PanelFragment : Fragment(), Refrescable {
     }
 
     override fun alMostrar() = cargar()
+
+    override fun onResume() {
+        super.onResume()
+        val raiz = view ?: return
+        if (!isHidden) viewLifecycleOwner.lifecycleScope.launch { Campana.actualizar(raiz.findViewById(R.id.campanaPanel)) }
+    }
 
     private fun kpi(raiz: View, id: Int, icono: Int, color: Int, fondo: Int, etiqueta: String, accion: () -> Unit) {
         val tarjeta = raiz.findViewById<View>(id)
@@ -83,6 +91,7 @@ class PanelFragment : Fragment(), Refrescable {
         viewLifecycleOwner.lifecycleScope.launch {
             val r = api { panel() }
             refrescar.isRefreshing = false
+            Campana.actualizar(view?.findViewById(R.id.campanaPanel) ?: return@launch)
             when (r) {
                 is Resultado.Ok -> pintar(r.dato)
                 is Resultado.Error -> requireContext().toast(r.mensaje)

@@ -147,6 +147,18 @@ object Fechas {
 
     fun completa(iso: String?): String = parse(iso)?.let { SimpleDateFormat("d MMM yyyy, HH:mm", LOCALE_MX).format(it) } ?: ""
 
+    fun relativa(iso: String?): String {
+        val fecha = parse(iso) ?: return ""
+        val minutos = (System.currentTimeMillis() - fecha.time) / 60000
+        return when {
+            minutos < 1 -> "Ahora"
+            minutos < 60 -> "Hace $minutos min"
+            minutos < 24 * 60 -> "Hace ${minutos / 60} h"
+            minutos < 48 * 60 -> "Ayer"
+            else -> corta(iso)
+        }
+    }
+
     fun hora(iso: String?): String = parse(iso)?.let { SimpleDateFormat("d MMM, HH:mm", LOCALE_MX).format(it) } ?: ""
 }
 

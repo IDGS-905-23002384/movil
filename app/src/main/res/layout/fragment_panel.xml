@@ -71,6 +71,10 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_chip_blanco_t"
                         android:textColor="@color/cian" />
+
+                    <include
+                        android:id="@+id/campanaPanel"
+                        layout="@layout/view_campana" />
                 </LinearLayout>
 
                 <TextView
