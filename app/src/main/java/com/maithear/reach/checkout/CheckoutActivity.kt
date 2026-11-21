@@ -31,7 +31,9 @@ import com.maithear.reach.core.ocultarTeclado
 import com.maithear.reach.core.toast
 import com.maithear.reach.core.valor
 import com.maithear.reach.core.visible
+import com.maithear.reach.core.Sucursal
 import com.maithear.reach.cuenta.DireccionesActivity
+import com.maithear.reach.mapas.SucursalesActivity
 import com.maithear.reach.pedidos.PedidoDetalleActivity
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -44,12 +46,22 @@ class CheckoutActivity : BaseActivity() {
     private var listaDirecciones: List<Direccion> = emptyList()
     private var metodoId: Int? = null
     private var direccionId: Int? = null
+    private var listaSucursales: List<Sucursal> = emptyList()
+    private var sucursalId: Int? = null
 
     private lateinit var etTitular: EditText
     private lateinit var etTarjeta: EditText
     private lateinit var etVencimiento: EditText
     private lateinit var etCvv: EditText
     private lateinit var btnPagar: MaterialButton
+
+    private val seleccionSucursal = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { r ->
+        if (r.resultCode == Activity.RESULT_OK) {
+            val id = r.data?.getIntExtra(SucursalesActivity.EXTRA_SUCURSAL_ID, 0) ?: 0
+            if (id > 0) sucursalId = id
+            pintarDireccion()
+        }
+    }
 
     private val seleccionDireccion = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { r ->
         if (r.resultCode == Activity.RESULT_OK) {
@@ -78,6 +90,13 @@ class CheckoutActivity : BaseActivity() {
                 Intent(this, DireccionesActivity::class.java).putExtra(DireccionesActivity.EXTRA_SELECCION, true)
             )
         }
+        findViewById<MaterialButton>(R.id.btnCambiarSucursal).setOnClickListener {
+            seleccionSucursal.launch(
+                Intent(this, SucursalesActivity::class.java)
+                    .putExtra(SucursalesActivity.EXTRA_SELECCION, true)
+                    .putExtra(SucursalesActivity.EXTRA_SUCURSAL_ID, sucursalId ?: 0)
+            )
+        }
         btnPagar.setOnClickListener { pagar() }
         cargar()
     }
@@ -99,6 +118,7 @@ class CheckoutActivity : BaseActivity() {
             carritoActual = c
             val rMetodos = async { api { metodosEnvio(c.subtotalProductos) } }
             val rDirecciones = async { api { direcciones() } }
+            val rSucursales = async { api { sucursales() } }
             when (val m = rMetodos.await()) {
                 is Resultado.Ok -> listaMetodos = m.dato
                 is Resultado.Error -> toast(m.mensaje)
@@ -107,6 +127,8 @@ class CheckoutActivity : BaseActivity() {
                 is Resultado.Ok -> listaDirecciones = d.dato
                 is Resultado.Error -> toast(d.mensaje)
             }
+            (rSucursales.await() as? Resultado.Ok)?.let { listaSucursales = it.dato }
+            sucursalId = listaSucursales.firstOrNull()?.id
             metodoId = listaMetodos.firstOrNull()?.id
             direccionId = listaDirecciones.firstOrNull { it.esPredeterminada }?.id ?: listaDirecciones.firstOrNull()?.id
             findViewById<TextView>(R.id.tvCheckoutArticulos).text =
@@ -168,7 +190,12 @@ class CheckoutActivity : BaseActivity() {
     private fun pintarDireccion() {
         val requiere = metodoActual?.requiereDireccion ?: true
         findViewById<View>(R.id.cardDireccion).visible(requiere)
-        findViewById<TextView>(R.id.tvPasoPago).text = if (requiere) "Paso 3" else "Paso 2"
+        findViewById<View>(R.id.cardSucursalRecoleccion).visible(!requiere)
+        findViewById<TextView>(R.id.tvPasoPago).text = "Paso 3"
+        val sucursal = listaSucursales.firstOrNull { it.id == sucursalId }
+        findViewById<TextView>(R.id.tvSucursalNombre).text = sucursal?.nombre ?: "Elige una sucursal"
+        findViewById<TextView>(R.id.tvSucursalDetalle).text =
+            sucursal?.let { "${it.direccion}, ${it.ciudad}\n${it.horario}" } ?: "Toca Ver mapa para elegir la tienda más cercana."
         val boton = findViewById<MaterialButton>(R.id.btnCambiarDireccion)
         val tvNombre = findViewById<TextView>(R.id.tvDireccionNombre)
         val tvTexto = findViewById<TextView>(R.id.tvDireccionTexto)
@@ -309,7 +336,7 @@ class CheckoutActivity : BaseActivity() {
         btnPagar.text = "Procesando…"
         val notas = findViewById<EditText>(R.id.etNotas).valor().ifBlank { null }
         lifecycleScope.launch {
-            val r = api { crearPedido(Checkout(if (metodo.requiereDireccion) direccionId else null, metodo.id, pago, notas)) }
+            val r = api { crearPedido(Checkout(if (metodo.requiereDireccion) direccionId else null, metodo.id, pago, notas, if (metodo.requiereDireccion) null else sucursalId)) }
             when (r) {
                 is Resultado.Ok -> {
                     PedidoDetalleActivity.abrir(this@CheckoutActivity, r.dato.id, nuevo = true)

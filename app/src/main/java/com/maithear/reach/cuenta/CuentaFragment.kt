@@ -34,6 +34,7 @@ import com.maithear.reach.core.toast
 import com.maithear.reach.core.visible
 import com.maithear.reach.notificaciones.NotificacionesActivity
 import com.maithear.reach.notificaciones.ProgramadorNotificaciones
+import com.maithear.reach.mapas.SucursalesActivity
 import com.maithear.reach.pedidos.PedidosActivity
 import com.maithear.reach.tienda.TiendaActivity
 import kotlinx.coroutines.launch
@@ -84,6 +85,9 @@ class CuentaFragment : Fragment(), Refrescable {
 
         raiz.findViewById<View>(R.id.filaNotificaciones).configurarFila(R.drawable.ic_campana, "Notificaciones", "Avisos de pedidos y de la tienda") {
             startActivity(Intent(requireContext(), NotificacionesActivity::class.java))
+        }
+        raiz.findViewById<View>(R.id.filaSucursales).configurarFila(R.drawable.ic_mapa, "Sucursales", "Tiendas, horarios y cómo llegar") {
+            startActivity(Intent(requireContext(), SucursalesActivity::class.java))
         }
         val filaPedidos = raiz.findViewById<View>(R.id.filaPedidos)
         val filaDirecciones = raiz.findViewById<View>(R.id.filaDirecciones)

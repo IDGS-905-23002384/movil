@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_header" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <org.osmdroid.views.MapView
+            android:id="@+id/mapaUbicacion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="40dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/pin_seleccion" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="76dp"
+            android:background="@drawable/bg_card"
+            android:elevation="4dp"
+            android:padding="12dp"
+            android:text="Mueve el mapa hasta que el pin quede sobre tu domicilio."
+            android:textColor="@color/texto_sec"
+            android:textSize="12sp" />
+
+        <ImageButton
+            android:id="@+id/btnMiUbicacion"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="top|end"
+            android:layout_margin="16dp"
+            android:background="@drawable/bg_boton_mapa"
+            android:contentDescription="Usar mi ubicación"
+            android:elevation="4dp"
+            android:src="@drawable/ic_mi_ubicacion"
+            app:tint="@color/azul" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:layout_margin="8dp"
+            android:background="@drawable/bg_badge_gris"
+            android:paddingStart="6dp"
+            android:paddingTop="2dp"
+            android:paddingEnd="6dp"
+            android:paddingBottom="2dp"
+            android:text="© OpenStreetMap"
+            android:textColor="@color/texto_sec"
+            android:textSize="9sp" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/barraUbicacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_barra_inferior"
+        android:elevation="12dp"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            style="@style/ReachEyebrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ubicación seleccionada" />
+
+        <TextView
+            android:id="@+id/tvUbicacionDireccion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Buscando dirección…"
+            android:textColor="@color/texto"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvUbicacionCoordenadas"
+            style="@style/ReachPequeno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnConfirmarUbicacion"
+            style="@style/ReachBotonPrimario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Usar esta ubicación" />
+    </LinearLayout>
+</LinearLayout>

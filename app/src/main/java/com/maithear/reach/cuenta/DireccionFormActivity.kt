@@ -1,11 +1,15 @@
 package com.maithear.reach.cuenta
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.chip.Chip
@@ -21,6 +25,11 @@ import com.maithear.reach.core.insetsSistema
 import com.maithear.reach.core.ocultarTeclado
 import com.maithear.reach.core.toast
 import com.maithear.reach.core.valor
+import com.maithear.reach.core.visible
+import com.maithear.reach.mapas.Mapas
+import com.maithear.reach.mapas.UbicacionActivity
+import org.osmdroid.util.GeoPoint
+import org.osmdroid.views.MapView
 import kotlinx.coroutines.launch
 
 class DireccionFormActivity : BaseActivity() {
@@ -38,6 +47,23 @@ class DireccionFormActivity : BaseActivity() {
     }
 
     private var existente: Direccion? = null
+    private var latitud: Double? = null
+    private var longitud: Double? = null
+    private lateinit var mapaMini: MapView
+
+    private val selectorUbicacion = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { r ->
+        val datos = r.data
+        if (r.resultCode != Activity.RESULT_OK || datos == null) return@registerForActivityResult
+        latitud = datos.getDoubleExtra(UbicacionActivity.EXTRA_LATITUD, 0.0)
+        longitud = datos.getDoubleExtra(UbicacionActivity.EXTRA_LONGITUD, 0.0)
+        completarSiVacio(R.id.etDirCalle, datos.getStringExtra(UbicacionActivity.EXTRA_CALLE))
+        completarSiVacio(R.id.etDirExterior, datos.getStringExtra(UbicacionActivity.EXTRA_NUMERO))
+        completarSiVacio(R.id.etDirColonia, datos.getStringExtra(UbicacionActivity.EXTRA_COLONIA))
+        completarSiVacio(R.id.etDirCiudad, datos.getStringExtra(UbicacionActivity.EXTRA_CIUDAD))
+        completarSiVacio(R.id.etDirEstado, datos.getStringExtra(UbicacionActivity.EXTRA_ESTADO))
+        completarSiVacio(R.id.etDirCp, datos.getStringExtra(UbicacionActivity.EXTRA_CP)?.filter { it.isDigit() }?.take(5))
+        pintarUbicacion()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +71,15 @@ class DireccionFormActivity : BaseActivity() {
         existente = intent.getStringExtra(EXTRA_DIRECCION)?.let { Gson().fromJson(it, Direccion::class.java) }
         configurarHeader(if (existente == null) "Nueva dirección" else "Editar dirección", "Entregas")
         findViewById<View>(R.id.barraDireccion).insetsSistema(abajo = true)
+
+        val contenedorMapa = findViewById<View>(R.id.mapaMiniDireccion)
+        mapaMini = contenedorMapa.findViewById(R.id.mapaTarjeta)
+        Mapas.preparar(mapaMini, zoom = 12.0, interactivo = false)
+        contenedorMapa.findViewById<View>(R.id.vMapaBloqueo).apply {
+            visible(true)
+            setOnClickListener { abrirSelector() }
+        }
+        findViewById<MaterialButton>(R.id.btnUbicarMapa).setOnClickListener { abrirSelector() }
 
         val estado = findViewById<AutoCompleteTextView>(R.id.etDirEstado)
         estado.setAdapter(ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, ESTADOS))
@@ -67,9 +102,59 @@ class DireccionFormActivity : BaseActivity() {
                 else -> R.id.chipOtro
             }
             findViewById<ChipGroup>(R.id.chipsAlias).check(chip)
+            latitud = d.latitud
+            longitud = d.longitud
         }
+        pintarUbicacion()
 
         findViewById<MaterialButton>(R.id.btnGuardarDireccion).setOnClickListener { guardar() }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mapaMini.onResume()
+    }
+
+    override fun onPause() {
+        mapaMini.onPause()
+        super.onPause()
+    }
+
+    private fun abrirSelector() {
+        val intent = Intent(this, UbicacionActivity::class.java)
+        val lat = latitud
+        val lng = longitud
+        if (lat != null && lng != null) {
+            intent.putExtra(UbicacionActivity.EXTRA_LATITUD, lat).putExtra(UbicacionActivity.EXTRA_LONGITUD, lng)
+        }
+        selectorUbicacion.launch(intent)
+    }
+
+    private fun completarSiVacio(id: Int, valor: String?) {
+        val campo = findViewById<EditText>(id)
+        if (campo.valor().isEmpty() && !valor.isNullOrBlank()) campo.setText(valor)
+    }
+
+    private fun pintarUbicacion() {
+        val lat = latitud
+        val lng = longitud
+        Mapas.limpiar(mapaMini)
+        val estado = findViewById<TextView>(R.id.tvUbicacionEstado)
+        val boton = findViewById<MaterialButton>(R.id.btnUbicarMapa)
+        if (lat != null && lng != null) {
+            val punto = GeoPoint(lat, lng)
+            Mapas.marcador(mapaMini, punto, "Domicilio", R.drawable.pin_destino)
+            mapaMini.controller.setZoom(16.5)
+            mapaMini.controller.setCenter(punto)
+            estado.text = "Ubicación guardada. El repartidor llegará directo a tu puerta."
+            boton.text = "Cambiar"
+        } else {
+            mapaMini.controller.setZoom(12.0)
+            mapaMini.controller.setCenter(Mapas.LEON)
+            estado.text = "Ubica tu domicilio para que el repartidor llegue sin problemas."
+            boton.text = "Ubicar"
+        }
+        mapaMini.invalidate()
     }
 
     private fun campo(id: Int): EditText = findViewById(id)
@@ -117,7 +202,9 @@ class DireccionFormActivity : BaseActivity() {
             estado = estado,
             codigoPostal = cp,
             referencias = campo(R.id.etDirReferencias).valor().ifBlank { null },
-            esPredeterminada = findViewById<CheckBox>(R.id.cbDirPredeterminada).isChecked
+            esPredeterminada = findViewById<CheckBox>(R.id.cbDirPredeterminada).isChecked,
+            latitud = latitud,
+            longitud = longitud
         )
 
         val boton = findViewById<MaterialButton>(R.id.btnGuardarDireccion)

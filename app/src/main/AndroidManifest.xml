@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:name=".ReachApp"
@@ -40,6 +43,8 @@
         <activity android:name=".admin.FormProductoActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
         <activity android:name=".admin.CatalogosActivity" android:exported="false" />
         <activity android:name=".notificaciones.NotificacionesActivity" android:exported="false" android:launchMode="singleTop" />
+        <activity android:name=".mapas.SucursalesActivity" android:exported="false" />
+        <activity android:name=".mapas.UbicacionActivity" android:exported="false" />
 
     </application>
 

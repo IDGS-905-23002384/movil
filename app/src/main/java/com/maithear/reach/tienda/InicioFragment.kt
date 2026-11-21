@@ -23,6 +23,7 @@ import com.maithear.reach.core.ocultarVacio
 import com.maithear.reach.core.saludo
 import com.maithear.reach.core.visible
 import com.maithear.reach.notificaciones.Campana
+import com.maithear.reach.mapas.SucursalesActivity
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
@@ -50,6 +51,9 @@ class InicioFragment : Fragment(), Refrescable {
         Campana.configurar(view.findViewById(R.id.campanaInicio), requireActivity())
         view.findViewById<View>(R.id.buscadorInicio).setOnClickListener { tienda?.abrirCatalogo(enfocarBusqueda = true) }
         view.findViewById<View>(R.id.cardBannerArma).setOnClickListener { tienda?.irA(R.id.nav_arma) }
+        view.findViewById<View>(R.id.cardSucursalesInicio).setOnClickListener {
+            startActivity(android.content.Intent(requireContext(), SucursalesActivity::class.java))
+        }
         view.findViewById<View>(R.id.tvVerOfertas).setOnClickListener { tienda?.abrirCatalogo(soloOfertas = true) }
 
         val agregar: (com.maithear.reach.core.ProductoLista) -> Unit = { p ->

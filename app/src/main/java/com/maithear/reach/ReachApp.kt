@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.maithear.reach.auth.MainActivity
 import com.maithear.reach.core.ApiClient
 import com.maithear.reach.core.Sesion
+import com.maithear.reach.mapas.Mapas
 import com.maithear.reach.notificaciones.Notificador
 import com.maithear.reach.notificaciones.ProgramadorNotificaciones
 
@@ -16,6 +17,7 @@ class ReachApp : Application() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         Sesion.iniciar(this)
         Notificador.crearCanales(this)
+        Mapas.iniciar(this)
         ApiClient.alExpirarSesion = {
             ProgramadorNotificaciones.cancelar(this)
             val intent = Intent(this, MainActivity::class.java)

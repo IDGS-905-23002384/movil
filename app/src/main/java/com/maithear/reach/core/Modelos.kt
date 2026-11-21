@@ -234,7 +234,9 @@ data class Direccion(
     val estado: String,
     val codigoPostal: String,
     val referencias: String?,
-    val esPredeterminada: Boolean
+    val esPredeterminada: Boolean,
+    val latitud: Double?,
+    val longitud: Double?
 )
 
 data class DireccionGuardar(
@@ -249,7 +251,9 @@ data class DireccionGuardar(
     val estado: String,
     val codigoPostal: String,
     val referencias: String?,
-    val esPredeterminada: Boolean
+    val esPredeterminada: Boolean,
+    val latitud: Double?,
+    val longitud: Double?
 )
 
 data class MetodoEnvio(
@@ -266,7 +270,7 @@ data class MetodoEnvio(
 )
 
 data class Pago(val titular: String, val numeroTarjeta: String, val vencimiento: String, val cvv: String)
-data class Checkout(val direccionId: Int?, val metodoEnvioId: Int, val pago: Pago, val notas: String?)
+data class Checkout(val direccionId: Int?, val metodoEnvioId: Int, val pago: Pago, val notas: String?, val sucursalId: Int?)
 
 data class PedidoResumen(
     val id: Int,
@@ -330,7 +334,9 @@ data class PedidoDetalle(
     val clienteEmail: String,
     val puedeCancelar: Boolean,
     val detalles: List<PedidoDetalleItem>,
-    val seguimiento: List<Seguimiento>
+    val seguimiento: List<Seguimiento>,
+    val sucursal: Sucursal?,
+    val rastreo: Rastreo?
 )
 
 data class ActualizarArmado(val estado: String)
@@ -386,6 +392,31 @@ data class Notificacion(
 )
 
 data class ConteoNotificaciones(val noLeidas: Int, val ultimoId: Int)
+
+data class Sucursal(
+    val id: Int,
+    val nombre: String,
+    val direccion: String,
+    val ciudad: String,
+    val telefono: String,
+    val horario: String,
+    val latitud: Double,
+    val longitud: Double
+)
+
+data class Punto(val latitud: Double, val longitud: Double)
+
+data class Rastreo(
+    val estado: String,
+    val progreso: Double,
+    val origenNombre: String,
+    val origen: Punto,
+    val destinoNombre: String,
+    val destino: Punto,
+    val destinoAproximado: Boolean,
+    val repartidor: Punto,
+    val ruta: List<Punto>
+)
 
 object TiposComponente {
     const val CPU = "CPU"

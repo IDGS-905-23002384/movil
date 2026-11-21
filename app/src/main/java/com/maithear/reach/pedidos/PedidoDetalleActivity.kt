@@ -34,6 +34,10 @@ import com.maithear.reach.core.inflar
 import com.maithear.reach.core.mxn
 import com.maithear.reach.core.toast
 import com.maithear.reach.core.visible
+import com.maithear.reach.mapas.Mapas
+import com.google.android.material.progressindicator.LinearProgressIndicator
+import org.osmdroid.util.GeoPoint
+import org.osmdroid.views.MapView
 import kotlinx.coroutines.launch
 
 class PedidoDetalleActivity : BaseActivity() {
@@ -60,6 +64,7 @@ class PedidoDetalleActivity : BaseActivity() {
     private var mostrarExito = false
     private var ocupado = false
     private lateinit var refrescar: SwipeRefreshLayout
+    private var mapa: MapView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -106,6 +111,7 @@ class PedidoDetalleActivity : BaseActivity() {
         findViewById<TextView>(R.id.tvDetFecha).text = "Realizado el ${Fechas.completa(p.fecha)}"
         Estados.aplicar(findViewById(R.id.tvDetEstado), estadoPrincipal(p))
         pintarTracker(p)
+        pintarMapa(p)
 
         findViewById<TextView>(R.id.tvDetEntrega).text = when {
             p.estado == "Cancelado" -> "Este pedido fue cancelado el ${Fechas.corta(p.fechaActualizacion)}."
@@ -199,6 +205,89 @@ class PedidoDetalleActivity : BaseActivity() {
         }
 
         pintarAdmin(p)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mapa?.onResume()
+    }
+
+    override fun onPause() {
+        mapa?.onPause()
+        super.onPause()
+    }
+
+    private fun obtenerMapa(): MapView {
+        mapa?.let { return it }
+        val nuevo = findViewById<View>(R.id.mapaPedido).findViewById<MapView>(R.id.mapaTarjeta)
+        Mapas.preparar(nuevo)
+        nuevo.onResume()
+        mapa = nuevo
+        return nuevo
+    }
+
+    private fun pintarMapa(p: PedidoDetalle) {
+        val tarjeta = findViewById<View>(R.id.cardMapa)
+        val rastreo = p.rastreo
+        val sucursal = p.sucursal
+        val activo = p.estado != "Cancelado"
+        if (!activo || (rastreo == null && sucursal == null)) {
+            tarjeta.visible(false)
+            return
+        }
+        tarjeta.visible(true)
+        val m = obtenerMapa()
+        Mapas.limpiar(m)
+        val titulo = findViewById<TextView>(R.id.tvMapaTitulo)
+        val estado = findViewById<TextView>(R.id.tvMapaEstado)
+        val progreso = findViewById<LinearProgressIndicator>(R.id.progRuta)
+        val detalle = findViewById<TextView>(R.id.tvMapaDetalle)
+        val boton = findViewById<MaterialButton>(R.id.btnAbrirMapa)
+
+        if (rastreo != null) {
+            titulo.text = "Rastreo del envío"
+            val ruta = rastreo.ruta.map { Mapas.punto(it) }
+            val origen = Mapas.punto(rastreo.origen)
+            val destino = Mapas.punto(rastreo.destino)
+            val recorrido = (rastreo.progreso * (ruta.size - 1)).toInt().coerceIn(0, ruta.size - 1)
+            Mapas.ruta(m, ruta, ContextCompat.getColor(this, R.color.gris), discontinua = true)
+            if (recorrido > 0) Mapas.ruta(m, ruta.take(recorrido + 1) + Mapas.punto(rastreo.repartidor), ContextCompat.getColor(this, R.color.azul))
+            Mapas.marcador(m, origen, rastreo.origenNombre, R.drawable.pin_almacen)
+            Mapas.marcador(m, destino, rastreo.destinoNombre, R.drawable.pin_destino)
+            if (rastreo.estado == "En camino") {
+                Mapas.marcador(m, Mapas.punto(rastreo.repartidor), "Repartidor", R.drawable.pin_repartidor).setAnchor(0.5f, 0.5f)
+            }
+            Mapas.encuadrar(m, listOf(origen, destino))
+            val porcentaje = (rastreo.progreso * 100).toInt()
+            estado.text = rastreo.estado
+            progreso.visible(true)
+            progreso.progress = porcentaje
+            detalle.text = when (rastreo.estado) {
+                "Entregado" -> "Entregado en ${rastreo.destinoNombre}"
+                "En camino" -> "Tu paquete lleva $porcentaje% del recorrido desde ${rastreo.origenNombre}"
+                else -> "Saldrá de ${rastreo.origenNombre} en cuanto esté listo"
+            } + if (rastreo.destinoAproximado) ". Ubicación aproximada: agrega tu ubicación en Mis direcciones." else ""
+            boton.text = "Abrir en mapas"
+            boton.setOnClickListener {
+                val foco = if (rastreo.estado == "En camino") rastreo.repartidor else rastreo.destino
+                Mapas.abrirNavegacion(this, foco.latitud, foco.longitud, if (rastreo.estado == "En camino") "Repartidor Reach" else rastreo.destinoNombre)
+            }
+        } else if (sucursal != null) {
+            titulo.text = "Recoge en ${sucursal.nombre}"
+            val punto = GeoPoint(sucursal.latitud, sucursal.longitud)
+            Mapas.marcador(m, punto, sucursal.nombre, R.drawable.pin_tienda)
+            Mapas.encuadrar(m, listOf(punto))
+            estado.text = when (p.estadoEnvio) {
+                "Entregado" -> "Recogido"
+                "Enviado" -> "Listo"
+                else -> "Preparando"
+            }
+            progreso.visible(false)
+            detalle.text = "${sucursal.direccion}, ${sucursal.ciudad} · ${sucursal.horario}"
+            boton.text = "Cómo llegar"
+            boton.setOnClickListener { Mapas.abrirNavegacion(this, sucursal.latitud, sucursal.longitud, sucursal.nombre) }
+        }
+        m.invalidate()
     }
 
     private fun pintarTracker(p: PedidoDetalle) {
