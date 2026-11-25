@@ -103,6 +103,9 @@ class ArmaPcFragment : Fragment(), Refrescable {
             if (indice >= listaPasos.size - 1) abrirResumen() else irAPaso(indice + 1)
         }
         view.findViewById<MaterialButton>(R.id.btnVerResumen).setOnClickListener { abrirResumen() }
+        view.findViewById<View>(R.id.btnRecomendador).setOnClickListener {
+            startActivity(android.content.Intent(requireContext(), RecomendadorActivity::class.java))
+        }
         view.findViewById<View>(R.id.btnReiniciar).setOnClickListener {
             if (ConfiguradorEstado.vacio) return@setOnClickListener
             requireContext().confirmar("Reiniciar configuración", "Se quitarán todos los componentes seleccionados.", "Reiniciar") {

@@ -193,6 +193,29 @@ data class AgregarCarrito(val productoId: Int, val cantidad: Int)
 data class ActualizarCantidad(val cantidad: Int)
 data class AgregarEnsamble(val seleccion: SeleccionPc, val nombre: String?)
 
+data class UsoEquipo(val clave: String, val nombre: String, val descripcion: String, val presupuestoSugerido: Double)
+
+data class RecomendacionRequest(val presupuesto: Double, val uso: String)
+
+data class Recomendacion(
+    val nivel: String,
+    val titulo: String,
+    val descripcion: String,
+    val puntaje: Int,
+    val ahorro: Double,
+    val destacados: List<String>,
+    val seleccion: SeleccionPc,
+    val resumen: ResumenConfiguracion
+)
+
+data class Recomendaciones(
+    val uso: String,
+    val usoNombre: String,
+    val presupuesto: Double,
+    val minimoPosible: Double,
+    val opciones: List<Recomendacion>
+)
+
 data class CarritoItem(
     val id: Int,
     val productoId: Int,

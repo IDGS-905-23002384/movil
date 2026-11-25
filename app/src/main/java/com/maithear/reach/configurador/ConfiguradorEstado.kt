@@ -1,5 +1,6 @@
 package com.maithear.reach.configurador
 
+import com.maithear.reach.core.ComponenteSeleccionado
 import com.maithear.reach.core.Prearmado
 import com.maithear.reach.core.ProductoLista
 import com.maithear.reach.core.SeleccionPc
@@ -50,6 +51,16 @@ object ConfiguradorEstado {
         unicos.clear()
         almacenamiento.clear()
         for (c in prearmado.componentes) {
+            if (c.tipo == TiposComponente.STORAGE) almacenamiento.add(c.producto) else unicos[c.tipo] = c.producto
+        }
+        pasoInicial = 0
+        version++
+    }
+
+    fun cargarDesde(componentes: List<ComponenteSeleccionado>) {
+        unicos.clear()
+        almacenamiento.clear()
+        for (c in componentes) {
             if (c.tipo == TiposComponente.STORAGE) almacenamiento.add(c.producto) else unicos[c.tipo] = c.producto
         }
         pasoInicial = 0

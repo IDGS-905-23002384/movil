@@ -79,6 +79,12 @@ interface ApiService {
     @GET("api/configurador/prearmados")
     suspend fun prearmados(): List<Prearmado>
 
+    @GET("api/configurador/usos")
+    suspend fun usosEquipo(): List<UsoEquipo>
+
+    @POST("api/configurador/recomendar")
+    suspend fun recomendar(@Body body: RecomendacionRequest): Recomendaciones
+
     @GET("api/carrito")
     suspend fun carrito(): Carrito
 
