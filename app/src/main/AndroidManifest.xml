@@ -34,6 +34,7 @@
         <activity android:name=".auth.RegistroActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
         <activity android:name=".tienda.TiendaActivity" android:exported="false" android:windowSoftInputMode="adjustPan" />
         <activity android:name=".tienda.ProductoDetalleActivity" android:exported="false" />
+        <activity android:name=".configurador.RecomendadorActivity" android:exported="false" />
         <activity android:name=".checkout.CheckoutActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
         <activity android:name=".cuenta.DireccionesActivity" android:exported="false" />
         <activity android:name=".cuenta.DireccionFormActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />

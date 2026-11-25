@@ -47,6 +47,27 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRecomendador"
+                style="@style/ReachBotonTexto"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_chip_blanco_t"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:minHeight="40dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="14dp"
+                android:text="Por presupuesto"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:backgroundTint="@null"
+                app:icon="@drawable/ic_bolt"
+                app:iconPadding="6dp"
+                app:iconSize="16dp"
+                app:iconTint="@color/cian" />
+
             <ImageButton
                 android:id="@+id/btnReiniciar"
                 android:layout_width="40dp"
